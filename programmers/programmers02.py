@@ -1,3 +1,5 @@
+# level1 없는 숫자 더하기
+
 def solution(numbers):
     nums = [i for i in range(10)]
     answer = 0

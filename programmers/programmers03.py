@@ -1,5 +1,4 @@
-from re import T
-
+# level1 음양 더하기
 
 def solution(absolutes, signs):
     answer = 0
@@ -16,4 +15,5 @@ def solution(absolutes, signs):
 # signs = [True, False, True]
 absolutes = [1, 2, 3]
 signs = [False, False, True]
+
 print(solution(absolutes, signs))

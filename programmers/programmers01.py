@@ -1,3 +1,5 @@
+# level1 로또의 최고 순위와 최저 순위
+
 def solution(lottos, win_nums):
     zero = lottos.count(0)
     match = 6-len(list(set(win_nums)-set(lottos)))
