@@ -20,23 +20,24 @@ distance = [INF] * (V+1)
 def dijkstra(start):
     # 시작점 자신인 경우 값은 0
     distance[start] = 0
-    # (시작점의 거리, 시작점 노드) heap에 삽입 - 순서 중요
+    # (시작점의 최소 거리, 시작점 노드) heap에 삽입 - 순서 중요
     # 우선순위 큐는 첫 번째 값을 비교한 다음에, 같으면 다음 값을 비교
     myHeap = []
     heapq.heappush(myHeap, (0, start))
 
     while myHeap:
-        # 힙에서 현재 거리가 최소인 값을 뽑아 cur_w, cur_n에 해당 노드의 거리, 노드 번호 지정
+        # 힙에서 거리가 최소인 값을 뽑아 cur_w, cur_n에 해당 노드의 거리, 노드 번호 지정
         cur_w, cur_n = heapq.heappop(myHeap)
 
         # cur_w가 최솟값이 아니라면(이미 처리된 적 있는 노드라면) continue
         if distance[cur_n] < cur_w:
             continue
 
+        # cur_n과 연결된 점과 가중치를 next_n, weight에 각각 지정
         for next_n, weight in graph[cur_n]:
-            # 현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
-            # 다른 노드의 최솟값 갱신하고 힙에 해당 정보 삽입
+            # 시작점->cur_n + cur_n->next_n이 현재 next_n의 최솟값보다 작다면
             if cur_w + weight < distance[next_n]:
+                # next_n의 최솟값 갱신하고 힙에 해당 정보 삽입
                 distance[next_n] = cur_w + weight
                 heapq.heappush(myHeap, (cur_w + weight, next_n))
 
