@@ -4,16 +4,15 @@ from collections import deque
 
 
 def bfs(v):
-    visited[v] = True
     queue = deque([v])
 
     while queue:
         x = queue.popleft()
+        visited[x] = True
         print(x, end=" ")
 
         for i in graph[x]:
             if not visited[i]:
-                visited[i] = True
                 queue.append(i)
 
 
